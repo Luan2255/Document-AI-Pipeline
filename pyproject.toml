@@ -1,0 +1,35 @@
+# Define package metadata, runtime dependencies, and the project test settings.
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "document-ai-pipeline"
+version = "0.1.0"
+description = "A modular API for OCR and structured document extraction."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "httpx>=0.27,<1.0",
+    "pillow>=10.4,<13.0",
+    "psycopg[binary]>=3.2,<4.0",
+    "pydantic-settings>=2.6,<3.0",
+    "pymupdf>=1.24,<2.0",
+    "pytesseract>=0.3.13,<1.0",
+    "python-multipart>=0.0.18,<1.0",
+    "sqlalchemy>=2.0,<3.0",
+    "uvicorn[standard]>=0.32,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<9.0",
+    "pytest-cov>=6.0,<7.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
